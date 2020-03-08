@@ -1,0 +1,1091 @@
+<!-- technical documentation based on free code camp's css flexbox and grid tutorials -->
+<!--
+step 1. try to build the website on your own
+step 2. compare the code with free code camp's examples
+step 3. add your own styling 
+-->
+
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="utf-8">
+
+    <head>
+        
+        <title>Techniques for CSS Layouts</title>
+        <link rel="stylesheet" href="technical-documentation-website.css" type="text/css" />
+        
+    </head>
+
+    <body>
+<!--        the main element contains the page's main content (technical documentation)-->
+        <main id="main-doc">
+            
+            
+            <nav id="navbar" class="grid-area-navbar fixed-nav">
+                <header class="site-title">Techniques for CSS Layouts</header>
+                <ul class="nav-list">
+                    <a href="#CSS_Positioning_Fundamentals">
+                        <li class="nav-link nav-list-header">CSS Positioning Fundamentals</li>
+                    </a> 
+                    <a href="#block_and_inline">
+                        <li class="nav-link">block and inline</li>
+                    </a>                    
+                    <a href="#position_relative">
+                        <li class="nav-link">position: relative</li>
+                    </a>
+                    <a href="#position_absolute">
+                        <li class="nav-link">position: absolute</li>
+                    </a>                    
+                    <a href="#position_fixed">
+                        <li class="nav-link">position: fixed</li>
+                    </a>                    
+                    
+                    <a href="#css_flexbox_when_to_use">
+                        <li class="nav-link nav-list-header">CSS Flexbox: When to Use</li>
+                    </a>
+                    <a href="#make_a_row_or_column">
+                        <li class="nav-link">Make a row or column</li>
+                    </a>                         
+                
+                    <a href="#CSS_Flexbox_Examples ">
+                        <li class="nav-link nav-list-header">CSS Flexbox: Examples</li>
+                    </a>
+                    <a href="#align_elements_on_the_main_axis">
+                        <li class="nav-link">Align elements on the main axis</li>
+                    </a>
+                    <a href="#align_elements_on_the_cross_axis">
+                        <li class="nav-link">Align elements on the cross axis</li>
+                    </a>
+                    <a href="#split_flexbox_wrap">
+                        <li class="nav-link">Split flexbox wrap</li>
+                    </a>                       
+                    <a href="#shrink_items_to_fit_flexbox">
+                        <li class="nav-link">Shrink items to fit flexbox</li>
+                    </a>                       
+                    <a href="#grow_items_as_parent_expands">
+                        <li class="nav-link">Grow items as parent expands</li>
+                    </a>   
+                    <a href="#set_initial_size_before_shrink_and_grow">
+                        <li class="nav-link">Set initial size before shrink and grow</li>
+                    </a>                       
+                    <a href="#shorthand_flex_grow_shrink_and_basis">
+                        <li class="nav-link">Shorthand flex, grow, shrink and basis</li>
+                    </a>                       
+                    <a href="#rearrange_items_in_a_flexbox">
+                        <li class="nav-link">Rearrange items in a flexbox</li>
+                    </a>                       
+                    <a href="#override_item_alignment_individually">
+                        <li class="nav-link">Override item alignment individually</li>
+                    </a>
+                    <a href="#CSS_Grid_When_to_Use ">
+                        <li class="nav-link nav-list-header">CSS Grid: When to Use</li>
+                    </a>                
+                    <a href="#make_a_grid_with_columns">
+                        <li class="nav-link">Make a grid with columns</li>
+                    </a>
+                    <a href="#make_a_grid_with_rows_and_columns">
+                        <li class="nav-link">Make a grid with rows and columns</li>
+                    </a>
+                    <a href="#change_size_of_columns_with_units">
+                        <li class="nav-link">Change size of columns with units</li>
+                    </a>
+                    <a href="#make_gaps_between_columns_or_rows">
+                        <li class="nav-link">Make gaps between columns or rows</li>
+                    </a>
+                    <a href="#make_all_gaps_at_once">
+                        <li class="nav-link">Make all gaps at once</li>
+                    </a>
+                    <a href="#set_the_columns_an_item_consumes_with_lines">
+                        <li class="nav-link">Set the columns an item consumes with lines</li>
+                    </a>
+                    <a href="#set_the_rows_an_item_consumes_with_lines">
+                        <li class="nav-link">Set the rows an item consumes with lines</li>
+                    </a>
+                    
+                    <a href="#CSS_Grid_Examples">
+                        <li class="nav-link nav-list-header">CSS Grid: Examples</li>
+                    </a>                
+                    <a href="#justify_a_cells_item_horizontally">
+                        <li class="nav-link">Justify a cell’s item horizontally</li>
+                    </a>                    
+                    <a href="#justify_a_cells_item_vertically">
+                        <li class="nav-link">Justify a cell’s item vertically</li>
+                    </a>
+                    <a href="#justify_all_items_horizontally_simultaneously">
+                        <li class="nav-link">Justify all items horizontally simultaneously</li>
+                    </a>
+                    <a href="#justify_all_items_vertically_simultaneously">
+                        <li class="nav-link">Justify all items vertically simultaneously</li>
+                    </a>
+                    <a href="#divide_grid_into_area_template">
+                        <li class="nav-link">Divide grid into area template</li>
+                    </a>
+                    <a href="#place_items_into_grid_area">
+                        <li class="nav-link">Place items into grid area</li>
+                    </a>
+                    <a href="#make_an_area_withou_an_area_template">
+                        <li class="nav-link">Make an area without an area template</li>
+                    </a>
+                    <a href="#make_multiple_rows_or_columns_simultaneously">
+                        <li class="nav-link">Make multiple rows or columns simultaneously</li>
+                    </a>
+                    <a href="#shorthand_for_min_and_max_cell_size">
+                        <li class="nav-link">Shorthand for min and max cell size</li>
+                    </a>
+                    <a href="#make_a_flexible_layout_with_repeats_auto-fill">
+                        <li class="nav-link">Make a flexible layout with repeat’s auto-fill</li>
+                    </a>
+                    <a href="#resize_cells_with_repeats_auto-fit">
+                        <li class="nav-link">Resize cells with repeat’s auto-fit</li>
+                    </a>
+                    <a href="#media_queries_for_responsive_design">
+                        <li class="nav-link">Media queries for responsive design</li>
+                    </a>
+                    <a href="#make_a_grid_within_a_grid">
+                        <li class="nav-link">Make a grid within a grid</li>
+                    </a>
+                </ul>
+            </nav>
+            
+            <section class="grid-area-main">
+ 
+<!--        a minimum of 5 sections required -->
+            <section class="main-section" id="CSS_Positioning_Fundamentals">
+                
+                <header>CSS Positioning Fundamentals</header>
+                
+                <h2 id="block_and_inline">Block and Inline</h2>
+                <ul>
+                    <li>Block-level elements automatically start on a new line </li>   
+                    <li>Examples: headings, paragraphs, and divs.</li>
+                 </ul>
+                
+                <div class="display-example-container row-format">
+
+                    <div class="title-and-arrow">
+                        <p class="large-title">display: block</p>
+                        <p class="arrow">&rarr;</p>
+                    </div>
+
+                    <div class="colored-boxes">
+                        <div class="block-element color-one display-block">
+                        </div>
+                        <div class="block-element color-two display-block">
+                        </div>
+                        <div class="block-element color-three display-block">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->
+                </div>
+<!--                end of display-example-container class div-->
+                
+                <ul>
+                    <li>Inline items sit within surrounding content. </li>
+                    <li>Examples: images and spans. </li>
+                    <li>Inline doesn't let you set width and height. You must put text inside a div or use a span. </li>
+                </ul>
+                
+              <div class="display-example-container row-format">
+
+                    <div class="title-and-arrow">
+                        <p class="large-title">display: inline</p>
+                        <p class="arrow">&rarr;</p>
+                    </div>
+                          
+                    <div class="colored-boxes extra-padding">
+
+                        <div class="block-element color-one display-inline">
+                            Inline doesn't let you set width and height.
+                        </div>
+
+                        <div class="block-element color-two display-inline">
+                            That's why we added text inside these divs.
+                        </div>
+
+                        <div class="block-element color-three display-inline">
+                            All the elements here are display: inline.
+                        </div> 
+
+                    </div>
+    <!--                end of colored-boxes class div-->
+                </div>
+<!--                end of display-example-container class div-->           
+                                
+               <ul>
+                   <li>Inline-block elements align on the same line but not wrapped. </li>
+                   <li>Within inline-block elements, you can set width and height of the div. </li>
+                </ul>
+                            
+              <div class="display-example-container row-format">
+
+                    <div class="title-and-arrow">
+                        <p class="large-title">display: inline-block</p>
+                        <p class="arrow">&rarr;</p>
+                    </div>
+                  
+                    <div class="colored-boxes">
+                        <div class="block-element color-one display-inline-block">
+                        </div>
+                        <div class="block-element color-two display-inline-block">
+                        </div>
+                        <div class="block-element color-three display-inline-block">
+                        </div> 
+                  </div>
+    <!--                end of colored-boxes class div-->
+                </div>
+<!--                end of display-example-container class div-->                 
+                <h2 id="position_relative">position: relative</h2>
+                <ul>
+                    <li>With relative positioning, you can specify how an element should move relative to its current position in the normal page flow. </li>
+                    <li>Use CSS offset properties top, right, bottom or left.</li>
+                </ul>
+                
+                <h2 id="position_absolute">position: absolute</h2>
+                <ul>
+                    <li>Absolute position locks an element in place relative to its parent container. </li>
+                    <li>Unlike relative, absolute removes an element from the normal flow. Other elements ignore it. </li>
+                    <li>Use CSS offset properties top, right, bottom or left. </li>
+                    <li>The element will be locked relative to its closest positioned ancestor. </li>
+                    <li>The parent item must have a position rule (typically done with position: relative.) Otherwise the browser will default to the body tag. </li>
+                </ul>
+                
+                <h2 id="position_fixed">position: fixed</h2> 
+                <ul>
+                    <li>Fixed position locks an element from scrolling. It locks relative to the browser window. </li>
+                    <li>Use CSS offset properties top, right, bottom or left. </li>
+                    <li>Fixed removes the element from the normal document flow. </li>
+                </ul>
+        
+            </section>
+<!--            end of css fundamentals section -->
+            
+            <section class="main-section" id="CSS_Flexbox_When_to_Use">
+                
+                <header>CSS Flexbox: When to Use</header>
+                <p>When positioning elements in one dimension.</p>
+                <h2 id="make_a_row_or_column">Make a Row or Column</h2>
+                <p>Use the <code>flex-direction</code> attribute with properties <code>row</code>, <code>column</code>, <code>row-reverse</code> or <code>column-reverse</code>. <br />
+                </p>
+                <h3>
+                Example: 
+                </h3>
+                <code>display: flex; <br />
+                    flex-direction: row;
+                </code>
+            
+            </section>
+<!--            end of flexbox when to use section -->
+        
+            <section class="main-section" id="CSS_Flexbox_Examples">
+                
+                <header>CSS Flexbox: Examples</header>
+                
+                <h2 id="align_elements_on_the_main_axis">Align Elements on the Main Axis</h2>
+                <div class="display-example-container column-format">
+
+                    <div class="title">
+                        <p class="large-title">justify-content: center</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container justify-content-center">
+                        <div class="block-element color-one">
+                        </div>
+                        <div class="block-element color-two">
+                        </div>
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->
+                         
+                    <div class="title">
+                        <p class="large-title">justify-content: flex-start</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container justify-content-flex-start">
+                        <div class="block-element color-one">
+                        </div>
+
+                        <div class="block-element color-two">
+                        </div>
+
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->
+                    
+                    <div class="title">
+                        <p class="large-title">justify-content: flex-end</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container justify-content-flex-end">
+                        <div class="block-element color-one">
+                        </div>
+
+                        <div class="block-element color-two">
+                        </div>
+
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->                    
+                    
+                    <div class="title">
+                        <p class="large-title">justify-content: space-between</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container justify-content-space-between">
+                        <div class="block-element color-one">
+                        </div>
+
+                        <div class="block-element color-two">
+                        </div>
+
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->                      
+
+                    <div class="title">
+                        <p class="large-title">justify-content: space-around</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container justify-content-space-around">
+                        <div class="block-element color-one">
+                        </div>
+
+                        <div class="block-element color-two">
+                        </div>
+
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->                            
+                    <div class="title">
+                        <p class="large-title">justify-content: space-evenly</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container justify-content-space-evenly">
+                        <div class="block-element color-one">
+                        </div>
+
+                        <div class="block-element color-two">
+                        </div>
+
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->                  
+                </div>
+<!--                end of display-example-container class div-->      
+                
+                <h2 id="align_elements_on_the_cross_axis">Align Elements on the Cross Axis</h2>
+
+                <div class="display-example-container column-format">    
+                    
+                    <div class="title">
+                        <p class="large-title">align-items: flex-start</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container flex-column align-items-flex-start flex">
+                        <div class="block-element color-one">
+                        </div>
+
+                        <div class="block-element color-two">
+                        </div>
+
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->                          
+                    <div class="title">
+                        <p class="large-title">align-items: flex-end</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container flex-column align-items-flex-end">
+                        <div class="block-element color-one">
+                        </div>
+
+                        <div class="block-element color-two">
+                        </div>
+
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->                
+    
+                    <div class="title">
+                        <p class="large-title">align-items: center</p>
+                    </div>
+                  
+                    <div class="colored-boxes flex-boxes-container flex-column align-items-center">
+                        <div class="block-element color-one">
+                        </div>
+
+                        <div class="block-element color-two">
+                        </div>
+
+                        <div class="block-element color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->                      
+                    
+                    <div class="title">
+                        <p class="large-title">align-items: stretch</p>
+                    </div>
+                                      
+                    <div class="colored-boxes flex-boxes-container flex-column align-items-stretch">
+                        <div class="stretch-item color-one">
+                        </div>
+
+                        <div class="stretch-item color-two">
+                        </div>
+
+                        <div class="stretch-item color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div--> 
+                    
+                    <div class="title">
+                        <p class="large-title">align-items: baseline</p>
+                    </div>
+                    
+                    <div class="colored-boxes flex-boxes-container flex-column align-items-baseline">
+                        <div class="stretch-item color-one">
+                        </div>
+
+                        <div class="stretch-item color-two">
+                        </div>
+
+                        <div class="stretch-item color-three">
+                        </div> 
+                    </div>
+    <!--                end of colored-boxes class div-->                     
+                    
+                </div>
+<!--                end of display-example-container class div-->      
+                
+                <h2 id="split_flexbox_wrap">Split Flexbox Wrap</h2>
+                <p>By default, a flexbox fits all flex items together on one row or column. <br />
+                    With <code>flex-wrap</code>, you can break the default item wrapping.
+                </p>
+            
+                
+                <div class="display-example-container flex-wrap-examples">
+                    
+                    <div class="title-and-examples">
+                        <div class="title">
+                            <p class="title-column-format">flex-wrap: nowrap</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container flex-column flex-wrap-nowrap">
+                            <div class="block-element color-one">
+                            </div>
+
+                            <div class="block-element color-two">
+                            </div>
+
+                            <div class="block-element color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+
+                    </div>
+<!--                    end of title-and-examples-->
+
+                  <div class="title-and-examples">
+
+                        <div class="title">
+                            <p class="large-title">flex-wrap: wrap</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container flex-column flex-wrap-wrap">
+                            <div class="block-element color-one">
+                            </div>
+
+                            <div class="block-element color-two">
+                            </div>
+
+                            <div class="block-element color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->         
+             
+                    </div>
+<!--                    end of title-and-examples-->        
+
+                </div>
+<!--                end of display-example-container class div-->      
+
+            <h2 id="shrink_items_to_fit_flexbox">Shrink Items to Fit Flexbox</h2>
+            
+                <div class="display-example-container column-format">
+                    
+                        <div class="title">
+                            <p class="title-column-format">flex-shrink: 1; flex-shrink: 2; flex-shrink: 3;</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container flex-column fixed-height-container">
+                            <div class="flex-item flex-shrink-one color-one">
+                            </div>
+
+                            <div class="flex-item flex-shrink-two color-two">
+                            </div>
+
+                            <div class="flex-item flex-shrink-three color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->        
+                
+            <h2 id="grow_items_as_parent_expands">Grow Items as Parent Expands</h2>
+            
+                <div class="display-example-container column-format">
+                    
+                        <div class="title">
+                            <p class="title-column-format">flex-grow: 1; flex-grow: 2; flex-grow: 3;</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container flex-column fixed-height-container">
+                            <div class="flex-item-no-size flex-grow-one color-one">
+                            </div>
+
+                            <div class="flex-item-no-size flex-grow-two color-two">
+                            </div>
+
+                            <div class="flex-item-no-size flex-grow-three color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->                        
+            <h2 id="set_initial_size_before_shrink_and_grow">Set Initial Size Before Shrink and Grow</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">flex-basis: auto</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container flex-column fixed-height-container">
+                            <div class="flex-item-no-size flex-basis-auto color-one">
+                            </div>
+
+                            <div class="flex-item-no-size flex-basis-auto color-two">
+                            </div>
+
+                            <div class="flex-item-no-size flex-basis-auto color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->
+                
+            <h2 id="shorthand_flex_grow_shrink_and_basis">Shorthand Flex Grow, Shrink and Basis</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">flex: 1 1 200px; flex: 2 2 200px; flex: 3 3 200px;</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container flex-column fixed-height-container">
+                            <div class="flex-item-no-size shorthand-flex-one color-one">
+                            </div>
+
+                            <div class="flex-item-no-size shorthand-flex-two color-two">
+                            </div>
+
+                            <div class="flex-item-no-size shorthand-flex-three color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->                    
+            <h2 id="rearrange_items_in_a_flexbox">Rearrange Items in a Flexbox</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">order: 3; order: 2; order: 1;</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container flex-column">
+                            <div class="stretch-item order-three color-one">
+                            </div>
+
+                            <div class="stretch-item order-two color-two">
+                            </div>
+
+                            <div class="stretch-item order-one color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->               
+                
+            <h2 id="override_item_alignment_individually">Override Item Alignment Individually</h2>
+                <ul>
+                     <li>Flex items don't allow CSS properties float, clear or vertical-align. </li>
+                     <li>Align-self takes the same values as align-items. </li>
+                     <li>Align-self overrides the align-items property. </li>
+                </ul>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">align-self: center;</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container flex-column">
+                            <div class="stretch-item align-self-center color-one">
+                            </div>
+                            <div class="stretch-item align-self-center color-two">
+                            </div>
+                            <div class="stretch-item align-self-center color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->       
+            </section>
+<!--            end of css flexbox examples -->
+                
+            <section class="main-section" id="CSS_Grid_When_to_Use">
+                
+                <header>CSS Grid: When to Use</header>
+                <p>
+                    CSS Grid turns an HTML element into a grid container. You can place child elements into the rows and columns.
+                </p>
+            
+                <h2 id="make_a_grid_with_columns">Make a Grid with Columns</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                display: grid; <br /> 
+                                grid-template-columns: 25% 25% 25%;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-columns-container">
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>
+                            <div class="grid-item color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->
+                
+                <h2 id="make_a_grid_with_rows_and_columns">Make a Grid with Rows and Columns</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                grid-template-row: 100px 100px;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-columns-container grid-rows-container">
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>
+                            <div class="grid-item color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->                    
+                <h2 id="change_size_of_columns_with_units">Change Size of Columns with Units</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                grid-template-columns: 100px 10em 5fr 50% auto;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column five-column-grid">
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>
+                            <div class="grid-item color-three">
+                            </div> 
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->   
+                
+                <h2 id="make_gaps_between_columns_or_rows">Make Gaps Between Columns or Rows</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                grid-column-gap: 10px;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-columns-container column-gap">
+                            <div class="grid-item color-one fixed-height">
+                            </div>
+                            <div class="grid-item color-two fixed-height">
+                            </div>
+                            <div class="grid-item color-three fixed-height">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->               
+                
+                <h2 id="make_all_gaps_at_once">Make All Gaps at Once</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                grid-gap: 20% 10%;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-with-row-and-columns">
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>
+                            <div class="grid-item color-three">
+                            </div> 
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->                   
+                <h2 id="set_the_columns_an_item_consumes_with_lines">Set the Columns an Item Consumes with Lines</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                on first item: <br />
+                                grid-column: 2 / 3;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-columns-container column-gap">
+                            <div class="grid-item color-one fixed-height item-set-with-grid-column">
+                            </div>
+                            <div class="grid-item color-two fixed-height">
+                            </div>
+                            <div class="grid-item color-three fixed-height">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->                  
+                <h2 id="set_the_rows_an_item_consumes_with_lines">Set the Rows an Item Consumes with Lines</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                grid-template-rows: 75px 75px; <br />
+                                on first item: <br />
+                                grid-row: 1 / 3;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-with-row-and-columns">
+                            <div class="grid-item color-one item-set-with-grid-row">
+                            </div>
+                            <div class="grid-item color-two ">
+                            </div>
+                            <div class="grid-item color-three">
+                            </div> 
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>                            
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->
+                
+            </section>
+<!--            end of css grid when to use section -->
+            
+            <section class="main-section" id="CSS_Grid_Examples">
+                <header>CSS Grid: Examples</header>
+
+                <h2 id="justify_a_cells_item_horizontally">Justify a Cell's Item Horizontally</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                default: <br /> 
+                                justify-self: stretch;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-with-row-and-columns">
+                            <div class="grid-item color-one fixed-width justify-self-stretch">
+                                <code class="code-in-div">justify-self: stretch</code>
+                            </div>
+                            <div class="grid-item color-two fixed-width justify-self-start">
+                                <code class="code-in-div">justify-self: start</code>
+                            </div>
+                            <div class="grid-item color-three fixed-width justify-self-center">
+                                <code class="code-in-div">justify-self: center</code>
+                            </div> 
+                            <div class="grid-item color-one fixed-width justify-self-end">
+                                <code class="code-in-div">justify-self: end</code>
+                            </div>
+                            <div class="grid-item color-two fixed-width justify-self-center">
+                                <code class="code-in-div">justify-self: center</code>
+                            </div>
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->                                 
+                <h2 id="justify_a_cells_item_vertically">Justify a Cell's Item Vertically</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                default: <br /> 
+                                align-self: stretch;
+                            </p>
+                        </div>
+                        <div class="flex-boxes-container grid-with-row-and-columns taller-rows">
+                            <div class="grid-item color-one fixed-width align-self-stretch">
+                                <code class="code-in-div">align-self: stretch</code>
+                            </div>
+                            <div class="grid-item color-two fixed-width align-self-start">
+                                <code class="code-in-div">align-self: start</code>
+                            </div>
+                            <div class="grid-item color-three fixed-width align-self-center">
+                                <code class="code-in-div">align-self: center</code>
+                            </div> 
+                            <div class="grid-item color-one fixed-width align-self-end">
+                                <code class="code-in-div">align-self: end</code>
+                            </div>
+                            <div class="grid-item color-two fixed-width align-self-center">
+                                <code class="code-in-div">align-self: center</code>
+                            </div>
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->   
+                
+                <h2 id="justify_all_items_horizontally_simultaneously">Justify All Items Horizontally Simultaneously</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                justify-items: center;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-with-row-and-columns justify-items-center">
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two ">
+                            </div>
+                            <div class="grid-item color-three">
+                            </div> 
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>                            
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div--> 
+                
+                <h2 id="justify_all_items_vertically_simultaneously">Justify All Items Vertically Simultaneously</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                align-items: start;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-with-row-and-columns align-items-start">
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two ">
+                            </div>
+                            <div class="grid-item color-three">
+                            </div> 
+                            <div class="grid-item color-one">
+                            </div>
+                            <div class="grid-item color-two">
+                            </div>                            
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->    
+                
+                <h2 id="divide_grid_into_area_template">Divide Grid into Area Template</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                grid-template-areas: <br />
+                                  "header header header" <br />
+                                  "footer footer footer";
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-with-row-and-columns grid-template-areas">
+                                <code class="code-in-div">header</code>
+                                <code class="code-in-div">header</code>
+                                <code class="code-in-div">header</code>
+                                <code class="code-in-div">footer</code>
+                                <code class="code-in-div">footer</code>
+                                <code class="code-in-div">footer</code>
+                        </div>
+        <!--                end of colored-boxes class div-->          
+                </div>
+<!--                end of display-example-container class div-->    
+                
+                <h2 id="place_items_into_grid_area">Place Items into Grid Area</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                grid-area: header;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-with-row-and-columns grid-template-areas">
+                                <code class="code-in-div grid-area-header">header</code>
+                                <code class="code-in-div">header</code>
+                                <code class="code-in-div">header</code>
+                                <code class="code-in-div">footer</code>
+                                <code class="code-in-div">footer</code>
+                                <code class="code-in-div">footer</code>
+                        </div>
+        <!--                end of colored-boxes class div-->          
+                </div>
+<!--                end of display-example-container class div-->                    
+                <h2 id="make_an_area_without_an_area_template">Make an Area without an Area Template</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                grid-area: 1st horiz. line / 1st vert. line / last h. line / last v. line;
+                            </p>
+                        </div>
+                        <div class="colored-boxes flex-boxes-container flex-column grid-with-row-and-columns">
+                                <code class="code-in-div grid-area">header (grid-area: 1 / 2 / 3 / 4;)</code>
+                                <code class="code-in-div">header</code>
+                                <code class="code-in-div">header</code>
+                                <code class="code-in-div">footer</code>
+                                <code class="code-in-div">footer</code>
+                                <code class="code-in-div">footer</code>
+                        </div>
+        <!--                end of colored-boxes class div-->          
+                </div>
+<!--                end of display-example-container class div-->                       
+            <h2 id="make_multiple_rows_or_columns_simultaneously">Make Multiple Rows or Columns Simultaneously</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">grid-template-columns: repeat (4, 25%);</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container repeat-columns">
+                            <div class="stretch-item color-one">
+                            </div>
+                            <div class="stretch-item color-two">
+                            </div>
+                            <div class="stretch-item color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->       
+            
+            <h2 id="shorthand_for_min_and_max_cell_size">Shorthand for Min and Max Cell Size</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">grid-template-rows: minmax(50px, 200px);</p>
+                        </div>
+
+                        <div class="colored-boxes flex-boxes-container repeat-columns minmax-row">
+                            <div class="stretch-item color-one">
+                            </div>
+                            <div class="stretch-item color-two">
+                            </div>
+                            <div class="stretch-item color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->                      
+            <h2 id="make_a_flexible_layout_with_repeats_auto_fill">Make a Flexible Layout with Repeat's Auto-Fill</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                            </p>
+                        </div>
+
+                        <div class="flex-boxes-container auto-fill">
+                            <div class="stretch-item color-one">
+                            </div>
+                            <div class="stretch-item color-two">
+                            </div>
+                            <div class="stretch-item color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->   
+                
+            <h2 id="resize_cells_with_repeats_auto-fit">Resize Cells with Repeat's Auto-Fit</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                            </p>
+                        </div>
+
+                        <div class="flex-boxes-container auto-fit">
+                            <div class="stretch-item color-one">
+                            </div>
+                            <div class="stretch-item color-two">
+                            </div>
+                            <div class="stretch-item color-three">
+                            </div> 
+                        </div>
+        <!--                end of colored-boxes class div-->              
+                </div>
+<!--                end of display-example-container class div-->                   
+                <h2 id="media_queries_for_responsive_design">Media Queries for Responsive Design</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                @media (min-width: 1000px) { <br />
+                                    .grid-template-areas-with-sidebar: <br />
+                                        "sidebar header header" <br />
+                                        "sidebar footer footer"; 
+                                }
+                            </p>
+                        </div>
+                        <div class="flex-boxes-container grid-with-row-and-columns grid-template-areas-with-sidebar">
+                                <code class="code-in-div grid-area-sidebar">grid-area: sidebar;</code>
+                                <code class="code-in-div grid-area-header">grid-area: header;</code>
+                                <code class="code-in-div grid-area-footer">grid-area: footer;</code>
+                        </div>
+        <!--                end of colored-boxes class div-->          
+                </div>
+<!--                end of display-example-container class div-->                   
+                <h2 id="make_a_grid_within_a_grid">Make a Grid within a Grid</h2>
+                <div class="display-example-container column-format">
+                        <div class="title">
+                            <p class="title-column-format">
+                                display: grid; <br />
+                                grid-template-columns: 50% 50%;
+                            </p>
+                        </div>
+                        <div class="flex-boxes-container grid-with-row-and-columns grid-template-areas-with-sidebar">
+                                <code class="code-in-div grid-area-sidebar ">
+                                    grid-area: sidebar;               
+                                </code>
+                                <code class="code-in-div grid-area-header grid-within-a-grid">
+                                    <code class="code-in-div ">first column within the header</code>                   <code class="code-in-div ">second column within the header</code>           
+                                </code> 
+                                <code class="code-in-div grid-area-footer">grid-area: footer;</code>
+                        </div>
+        <!--                end of colored-boxes class div-->          
+                </div>
+<!--                end of display-example-container class div-->               
+            
+            </section>
+<!--            end of css grid examples section-->
+                
+            </section>
+<!--        end of section with all content except for nav (class grid-area-main)-->
+            
+        </main>
+        
+
+    </body>
+
+</html>
+
